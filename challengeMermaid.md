@@ -1,12 +1,15 @@
 ## mermade diagram challenge
 
-```flowchart LR
+```mermaid
+flowchart LR
     A[Web Server] -->|html| B(Front End)
     B <--> C{API}
     C --> E[Gis database]
-    B <--> F[User applicaion]```
+    B <--> F[User applicaion]
+```
 
-```flowchart LR
+```mermaid
+flowchart LR
     A[User Application] -->|API Call| B(API)
     B <-->|GIS Info| C{GIS Database}
     B <-->|API Call| F[Web Front End]
@@ -16,6 +19,7 @@
         C
     end
 
-    E -->|HTML| F```
+    E -->|HTML| F
+```
 
 
