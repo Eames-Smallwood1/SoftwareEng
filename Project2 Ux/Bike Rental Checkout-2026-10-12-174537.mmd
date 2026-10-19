@@ -1,0 +1,50 @@
+flowchart TB
+    Start(["User Visits Website"]) --> Browse["Browse Bike Catalog"]
+    Browse --> Filter1{"Apply Filters"}
+    Filter1 --> Level["Filter by Skill Level<br>Beginner/Intermediate/Expert"] & Type["Filter by Bike Type<br>Kids/Boys/Girls"] & Price["Filter by Price Range"] & Availability["Filter by Availability"]
+    Level --> ViewBikes["View Filtered Bikes"]
+    Type --> ViewBikes
+    Price --> ViewBikes
+    Availability --> ViewBikes
+    ViewBikes --> SelectBike["Select a Bike Model"]
+    SelectBike --> Details["View Bike Details"]
+    Details --> Pricing["View Pricing Options"]
+    Pricing --> HourlyRate["See Hourly Rate"] & DailyRate["See Daily Rate"] & WeeklyRate["See Weekly Rate"]
+    HourlyRate --> CheckDates["Check Availability<br>for Trip Dates"]
+    DailyRate --> CheckDates
+    WeeklyRate --> CheckDates
+    CheckDates --> Decision{"Ready to Rent?"}
+    Decision -- No --> Browse
+    Decision -- Yes --> AddCart["Add to Cart"]
+    AddCart --> Checkout["Proceed to Checkout"]
+    Checkout --> Payment["Process Payment"]
+    Payment --> PaymentResult{"Payment successful?"}
+    PaymentResult -- Yes --> End(["Rental Confirmed"])
+    PaymentResult -- No --> PaymentError["Show Payment Processing Error"]
+    PaymentError -- Return to Checkout --> Checkout
+
+     Start:::entry
+     Browse:::action
+     Filter1:::filter
+     Level:::filter
+     Type:::filter
+     Price:::filter
+     Availability:::filter
+     SelectBike:::action
+     Details:::info
+     Pricing:::info
+     HourlyRate:::info
+     DailyRate:::info
+     WeeklyRate:::info
+     CheckDates:::info
+     Decision:::decision
+     Payment:::info
+     PaymentResult:::decision
+     End:::success
+     PaymentError:::decision
+    classDef entry fill:#f0f9ff,stroke:#38bdf8
+    classDef action fill:#f0fdf4,stroke:#4ade80
+    classDef filter fill:#fef4ff,stroke:#a78bfa
+    classDef info fill:#fff7ed,stroke:#fb923c
+    classDef decision fill:#fef2f2,stroke:#f87171
+    classDef success fill:#f7fee7,stroke:#a3e635
